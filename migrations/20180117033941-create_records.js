@@ -11,7 +11,11 @@ module.exports = {
     */
 
     return queryInterface.createTable('records', {
-      id: Sequelize.INTEGER,
+      id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
       title: Sequelize.STRING,
       price: Sequelize.DOUBLE,
       type: Sequelize.STRING,
