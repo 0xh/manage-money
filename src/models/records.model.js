@@ -6,16 +6,24 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const records = sequelizeClient.define('records', {
-    text: {
+    title: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DOUBLE,
+      allowNull: false,
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     hooks: {
       beforeCount(options) {
         options.raw = true;
-      }
-    }
+      },
+    },
   });
 
   records.associate = function (models) { // eslint-disable-line no-unused-vars
