@@ -3,6 +3,8 @@
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 
+const users = require('./users.model');
+
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const records = sequelizeClient.define('records', {
@@ -18,6 +20,10 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     hooks: {
       beforeCount(options) {
@@ -29,6 +35,8 @@ module.exports = function (app) {
   records.associate = function (models) { // eslint-disable-line no-unused-vars
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+
+    records.belongsTo(users(app));
   };
 
   return records;
