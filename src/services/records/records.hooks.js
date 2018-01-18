@@ -1,8 +1,8 @@
-const { authenticate } = require('@feathersjs/authentication').hooks;
+const { authenticate } = require('@feathersjs/authentication').hooks
 
 const addUserId = function (context) {
-  const { user } = context.params;
-  context.data.userId = user.id;
+  const { user } = context.params
+  context.data.userId = user.id
 };
 
 module.exports = {
@@ -38,4 +38,4 @@ module.exports = {
     patch: [],
     remove: [],
   },
-};
+}
