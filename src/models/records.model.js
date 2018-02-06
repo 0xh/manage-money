@@ -24,6 +24,13 @@ module.exports = function (app) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    date: {
+      type: DataTypes.DATE,
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     hooks: {
       beforeCount(options) {
