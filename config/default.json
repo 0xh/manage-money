@@ -32,7 +32,6 @@
     "facebook": {
       "clientID": "1554473021328051",
       "clientSecret": "43f0f7959719e0502d680142f742ff2d",
-      "successRedirect": "/",
       "scope": [
         "public_profile",
         "email"
