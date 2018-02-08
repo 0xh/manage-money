@@ -2,7 +2,10 @@ const authentication = require('@feathersjs/authentication')
 const jwt = require('@feathersjs/authentication-jwt')
 const local = require('@feathersjs/authentication-local')
 const oauth2 = require('@feathersjs/authentication-oauth2')
-const FacebookStrategy = require('passport-facebook')
+// const FacebookStrategy = require('passport-facebook')
+const FacebookTokenStrategy = require('passport-facebook-token')
+
+const FacebookTokenVerifier = require('./authentication/FacebookTokenVerifier')
 
 module.exports = function (app) {
   const config = app.get('authentication')
@@ -13,8 +16,10 @@ module.exports = function (app) {
   app.configure(local())
 
   app.configure(oauth2(Object.assign({
-    name: 'facebook',
-    Strategy: FacebookStrategy,
+    name: 'facebook-token',
+    Strategy: FacebookTokenStrategy,
+    idField: 'facebookId',
+    Verifier: FacebookTokenVerifier,
   }, config.facebook)))
 
   // The `authentication` service is used to create a JWT.

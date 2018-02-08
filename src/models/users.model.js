@@ -16,17 +16,23 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    picture: {
+      type: DataTypes.STRING,
+    },
 
     facebookId: { type: Sequelize.STRING },
 
   }, {
-    hooks: {
-      beforeCount(options) {
-        options.raw = true
+      hooks: {
+        beforeCount(options) {
+          options.raw = true
+        },
       },
-    },
-  })
+    })
 
   users.associate = function (models) { // eslint-disable-line no-unused-vars
     // Define associations here
